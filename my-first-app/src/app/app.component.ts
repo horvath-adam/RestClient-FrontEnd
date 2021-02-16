@@ -40,7 +40,7 @@ export class AppComponent {
   }
 
   addExample(): void {
-    this.exampleService.addExample(this.newExample).subscribe(res => {
+    this.exampleService.addExample({value: this.newExample}).subscribe(res => {
       this.newExampleStatus = 'OK';
     }, error => {
       this.newExampleStatus = 'HIBA';
@@ -49,7 +49,7 @@ export class AppComponent {
 
   edtExample(): void {
     if (this.editExampleId) {
-      this.exampleService.editExample(this.editExample, this.editExampleId).subscribe(res => {
+      this.exampleService.editExample({value: this.editExample}, this.editExampleId).subscribe(res => {
         this.editExampleStatus = 'OK';
       },
         error => {

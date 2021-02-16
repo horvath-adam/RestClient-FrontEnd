@@ -20,14 +20,14 @@ export class ExampleSerivce {
     return this.httpCLient.get<any>(EXAMPLE_API + '/' + id);
   }
 
-  addExample(newExample: string): Observable<any> {
+  addExample(newExample: any): Observable<any> {
     const headers = new HttpHeaders();
     headers.set('content-type', 'application/json');
     headers.set('Access-Control-Allow-Origin', '*');
     return this.httpCLient.post<any>(EXAMPLE_API, newExample, {headers});
   }
 
-  editExample(editExample: string, id: number): Observable<any> {
+  editExample(editExample: any, id: number): Observable<any> {
     return this.httpCLient.put<any>(EXAMPLE_API + '/' + id, editExample);
   }
 
