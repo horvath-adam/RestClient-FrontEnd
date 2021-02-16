@@ -1,0 +1,35 @@
+<section>
+  1. Az összes adat lekérése (GET)
+
+  <button type="button" (click)="getExamples()">Lekérés</button>
+  <br>
+  <textarea rows="4" cols="50" readonly [(ngModel)]="examples"> </textarea>
+</section>
+<hr>
+<section>
+  2. Id alapú adat lekérése (GET)
+  <input type="number" [(ngModel)]="exampleId">
+  <button type="button" (click)="getExample()">Lekérés</button>
+  <br>
+  <textarea rows="4" cols="50" readonly [(ngModel)]="example"> </textarea>
+</section>
+<hr>
+<section>
+  3. Új adat felvitele (POST)
+  <input type="text" [(ngModel)]="newExample">
+  <button type="button" (click)="addExample()">Felvitel</button>
+</section>
+<hr>
+<section>
+  4. Adatok módosítása (PUT)
+  id: <input type="number" [(ngModel)]="editExampleId">
+  adat: <input type="text" [(ngModel)]="editExample">
+  <button type="button" (click)="edtExample()">Módosítás</button>
+</section>
+<hr>
+<section>
+  5. Adatok törlése (DELETE)
+  id: <input type="number" [(ngModel)]="deleteExampleId">
+  <button type="button" (click)="deleteExample()">Törlés</button>
+</section>
+<router-outlet></router-outlet>
