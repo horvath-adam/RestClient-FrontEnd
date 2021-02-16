@@ -14,6 +14,12 @@ export class AppComponent {
   editExample: string = '';
   editExampleId: number | undefined;
   deleteExampleId: number | undefined;
+
+
+  newExampleStatus = 'Felvitel állapota';
+  editExampleStatus = 'Módosítás állapota';
+  deleteExampleStatus = 'Törlés állapota';
+
   constructor(private exampleService: ExampleSerivce) {
 
   }
@@ -28,24 +34,38 @@ export class AppComponent {
   getExample(): void {
     if (this.exampleId) {
       this.exampleService.getExample(this.exampleId).subscribe(res => {
-        this.example = res;
+        this.example = res.key;
       });
     }
   }
 
   addExample(): void {
-    this.exampleService.addExample(this.newExample).subscribe(res => {});
+    this.exampleService.addExample(this.newExample).subscribe(res => {
+      this.newExampleStatus = 'OK';
+    }, error => {
+      this.newExampleStatus = 'HIBA';
+    });
   }
 
   edtExample(): void {
     if (this.editExampleId) {
-      this.exampleService.editExample(this.editExample, this.editExampleId).subscribe(res => {});
+      this.exampleService.editExample(this.editExample, this.editExampleId).subscribe(res => {
+        this.editExampleStatus = 'OK';
+      },
+        error => {
+          this.editExampleStatus = 'HIBA';
+        });
     }
   }
 
   deleteExample(): void {
     if (this.deleteExampleId) {
-      this.exampleService.deleteExample(this.deleteExampleId).subscribe(res => {});
+      this.exampleService.deleteExample(this.deleteExampleId).subscribe(res => {
+        this.deleteExampleStatus = 'OK';
+        },
+        error => {
+          this.deleteExampleStatus = 'HIBA';
+        });
     }
   }
 }
